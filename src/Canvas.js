@@ -2,19 +2,21 @@ import { useEffect, useState, useRef } from 'react';
 
 export function Canvas() {
 
-    const canvasRef = useRef(null)
-    const contextRef = useRef(null)
-    const [isDrawing, setIsDrawing] = useState(false)
+    const canvasRef = useRef(null) // holds reference to canvas element
+    const contextRef = useRef(null) // holds reference to context variable
+    const [isDrawing, setIsDrawing] = useState(false) // boolean to draw/not draw
   
+    // runs after every render. kind of like a combo of componentDidMount and componentDidUpdate
     useEffect(() => {
-      const canvas = canvasRef.current
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
-      canvas.style.width = `${window.innerWidth}px`
-      canvas.style.height = `${window.innerHeight}px`
+      const canvas = canvasRef.current // finding canvas element
+    //   canvas.width = window.innerWidth
+    //   canvas.height = window.innerHeight
+    //   canvas.style.width = `${window.innerWidth}px`
+    //   canvas.style.height = `${window.innerHeight}px`
+    //   canvas.style.border = `5px navy solid`
   
-      const context = canvas.getContext("2d")
-      context.scale(1,1)
+      const context = canvas.getContext("2d") // creating drawing
+      // context.scale(1,1)
       context.lineCap = "round" // lines will have rounded edges
       context.strokeStyle = "black" // line color
       context.lineWidth = 5 // width of line
@@ -51,7 +53,8 @@ export function Canvas() {
     return (
       <div>
       <button onClick={clearCanvas}>clear</button>
-      <canvas onMouseDown={startDrawing} onMouseUp={stopDrawing} onMouseMove={draw} ref={canvasRef}>
+      <canvas onMouseDown={startDrawing} onMouseUp={stopDrawing} onMouseMove={draw} ref={canvasRef} width={700} height={700}
+        style={{ border: '5px navy solid', marginTop: 10}}>
   
       </canvas>
       </div>

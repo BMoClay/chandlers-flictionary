@@ -1,6 +1,7 @@
 import './App.css';
 // import { useEffect, useState, useRef } from 'react';
 import { Canvas } from './Canvas'
+import DigitalClock from './DigitalClock'
 
 function App() {
 
@@ -8,6 +9,7 @@ function App() {
   return (
     <>
     <Canvas />
+    <DigitalClock/>
     </>
   );
 }

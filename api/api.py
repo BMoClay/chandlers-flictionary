@@ -11,7 +11,7 @@ animal = random.choice(animals)
 def api():
     return {
         'userId': 1,
-        'animal': {animal},
+        'animal': f"{animal}",
         'completed': False,
     }
 
@@ -28,3 +28,6 @@ def index():
 @app.route('/api/time')
 def get_current_time():
     return {'time': time.time()}
+
+if __name__ == '__api__':
+   app.run(debug=True)

@@ -1,10 +1,10 @@
 import { useEffect, useState, useRef } from 'react';
 
-function Canvas({
-  wordToDraw
-}) {
 
-    console.log(wordToDraw)
+// function Canvas(animal) {
+export function Canvas(animal) {
+
+    console.log(animal)
     
     const canvasRef = useRef(null) // holds reference to canvas element
     const contextRef = useRef(null) // holds reference to context variable
@@ -64,5 +64,4 @@ function Canvas({
       </div>
     );
   }
-
-export default Canvas
+  // export default Canvas 

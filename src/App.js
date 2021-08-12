@@ -1,32 +1,38 @@
 import './App.css';
 import { useEffect, useState, useRef } from 'react';
+// import React from 'react'
 import { Canvas } from './Canvas'
-//import DigitalClock from './DigitalClock'
-import NewCanvas from './NewCanvas'
+
+
 // rough draft of next additions required for game //
-import Word from './GetWord'
-import Submit from './SubmitDrawing'
+// import Word from './GetWord'
+// import Submit from './SubmitDrawing'
 
 function App() {
-  let words = ["whale", "snake", "cat", "monkey", "camel", "rabbit", "pig", "bird", "lion", "duck"]
- console.log(words)
-  //  const [currentWordToDraw, setCurrentWordToDraw] = useState(null)
+
+  // const [animalToDraw, setAnimalToDraw] = useState(null)
+  // set[animalToDraw] = animal
+  
+
+  // const animals = ["whale", "snake", "cat", "monkey", "camel", "rabbit", "pig", "bird", "lion", "duck"]
+  // let animal = animals[Math.floor(Math.random()*animals.length)];
+
   // useEffect(() => {
   //   axios.get("www.googlequickdrawword").then((response) => {
-  //     setCurrentWordToDraw(response.data)
+  //     setAnimalToDraw(response.data)
   //   })
   // }, [])
 
-  
+  useEffect(() => {
+    fetch('/api').then(
+      response => response.json()
+      ).then(data => console.log(data))
+  });  
  
   return (
-    <>
-    {/* <Canvas 
-      wordToDraw={currentWordToDraw}
-    /> */}
-    <NewCanvas/>
-    {/* <DigitalClock/> */}
-    </>
+    <div className="App">
+      <Canvas/>
+    </div>
   );
 }
 

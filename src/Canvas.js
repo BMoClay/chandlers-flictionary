@@ -1,7 +1,11 @@
 import { useEffect, useState, useRef } from 'react';
 
-export function Canvas() {
+function Canvas({
+  wordToDraw
+}) {
 
+    console.log(wordToDraw)
+    
     const canvasRef = useRef(null) // holds reference to canvas element
     const contextRef = useRef(null) // holds reference to context variable
     const [isDrawing, setIsDrawing] = useState(false) // boolean to draw/not draw
@@ -61,4 +65,4 @@ export function Canvas() {
     );
   }
 
-
+export default Canvas

@@ -1,37 +1,24 @@
 import './App.css';
+import axios from 'axios';
 import { useEffect, useState, useRef } from 'react';
-// import React from 'react'
 import { Canvas } from './Canvas'
-
-
-// rough draft of next additions required for game //
-// import Word from './GetWord'
-// import Submit from './SubmitDrawing'
 
 function App() {
 
-  // const [animalToDraw, setAnimalToDraw] = useState(null)
-  // set[animalToDraw] = animal
-  
-
-  // const animals = ["whale", "snake", "cat", "monkey", "camel", "rabbit", "pig", "bird", "lion", "duck"]
-  // let animal = animals[Math.floor(Math.random()*animals.length)];
-
-  // useEffect(() => {
-  //   axios.get("www.googlequickdrawword").then((response) => {
-  //     setAnimalToDraw(response.data)
-  //   })
-  // }, [])
+  const [animalToDraw, setAnimalToDraw] = useState(null)
 
   useEffect(() => {
-    fetch('/api').then(
-      response => response.json()
-      ).then(data => console.log(data))
-  });  
- 
+    axios.get('/api').then((response) => {
+      setAnimalToDraw(response.data.animal)
+    })
+  }, []) 
+
   return (
     <div className="App">
-      <Canvas/>
+      {/* <h4>here's your word: </h4> */}
+      <Canvas
+         animal={animalToDraw}
+      />
     </div>
   );
 }

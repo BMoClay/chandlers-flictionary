@@ -1,8 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 
-
-// function Canvas(animal) {
-export function Canvas(animal, data) {
+export function Canvas(animal) {
 
     console.log(animal)
     
@@ -58,6 +56,7 @@ export function Canvas(animal, data) {
       <div>
       <p>{data.animal}</p>
       <button onClick={clearCanvas}>clear</button>
+      <h4>here's your word: {animal.animal}</h4>
       <canvas onMouseDown={startDrawing} onMouseUp={stopDrawing} onMouseMove={draw} ref={canvasRef} width={700} height={700}
         style={{ border: '5px navy solid', marginTop: 10}}>
   

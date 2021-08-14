@@ -51,11 +51,29 @@ export function Canvas(animal) {
       context.fillStyle = "white"
       context.fillRect(0, 0, canvas.width, canvas.height)
     }
+
+    function save() {
+      var dataURL = canvasRef.toDataURL();
+      // get base64 string from dataUrl
+      dataURL = dataURL.split(",")[1];
+      //  replace base64 characters '+/=' with '._-'
+      while (dataURL.indexOf('+') > 0) {
+         dataURL  = dataURL.replace('+', '.');
+      }
+      while (dataURL.indexOf('/') > 0) {
+         dataURL  = dataURL.replace('/', '_');
+      }
+      while (dataURL.indexOf('=') > 0) {
+         dataURL  = dataURL.replace('=', '-');
+      }
+
+      window.location.href = '/go/' + dataURL;
+   }
   
     return (
       <div>
-      <p>{data.animal}</p>
       <button onClick={clearCanvas}>clear</button>
+      {/* <button onClick={save}>Done!</button> */}
       <h4>here's your word: {animal.animal}</h4>
       <canvas onMouseDown={startDrawing} onMouseUp={stopDrawing} onMouseMove={draw} ref={canvasRef} width={700} height={700}
         style={{ border: '5px navy solid', marginTop: 10}}>

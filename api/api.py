@@ -4,14 +4,14 @@ from flask import Flask
 
 app = Flask(__name__, static_folder='../build', static_url_path='/')
 
-animals = ["whale", "snake", "cat", "monkey", "camel", "rabbit", "pig", "bird", "lion", "duck"]
-animal = random.choice(animals)
+# animals = ["whale", "snake", "cat", "monkey", "camel", "rabbit", "pig", "bird", "lion", "duck"]
+# animal = random.choice(animals)
 
 @app.route('/api', methods=['GET'])
 def api():
     return {
         'userId': 1,
-        'animal': {animal},
+        'animal': "Flictionary",
         'completed': False,
     }
 
@@ -28,3 +28,6 @@ def index():
 @app.route('/api/time')
 def get_current_time():
     return {'time': time.time()}
+
+if __name__ == '__api__':
+   app.run(debug=True)

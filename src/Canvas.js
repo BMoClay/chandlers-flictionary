@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 
 
 // function Canvas(animal) {
-export function Canvas(animal) {
+export function Canvas(animal, data) {
 
     console.log(animal)
     
@@ -56,6 +56,7 @@ export function Canvas(animal) {
   
     return (
       <div>
+      <p>{data.animal}</p>
       <button onClick={clearCanvas}>clear</button>
       <canvas onMouseDown={startDrawing} onMouseUp={stopDrawing} onMouseMove={draw} ref={canvasRef} width={700} height={700}
         style={{ border: '5px navy solid', marginTop: 10}}>

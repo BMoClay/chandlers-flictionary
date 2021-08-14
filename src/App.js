@@ -1,18 +1,16 @@
-import './App.css';
-import { useEffect, useState, useRef } from 'react';
+import "./App.css";
+import { useEffect, useState, useRef } from "react";
 // import React from 'react'
-import { Canvas } from './Canvas'
-
+import { Canvas } from "./Canvas";
+import axios from 'axios';
 
 // rough draft of next additions required for game //
 // import Word from './GetWord'
 // import Submit from './SubmitDrawing'
 
 function App() {
-
-  // const [animalToDraw, setAnimalToDraw] = useState(null)
+  const [data, setData] = useState([{}])
   // set[animalToDraw] = animal
-  
 
   // const animals = ["whale", "snake", "cat", "monkey", "camel", "rabbit", "pig", "bird", "lion", "duck"]
   // let animal = animals[Math.floor(Math.random()*animals.length)];
@@ -24,14 +22,24 @@ function App() {
   // }, [])
 
   useEffect(() => {
-    fetch('/api').then(
+    fetch("/api").then(
       response => response.json()
-      ).then(data => console.log(data))
-  });  
- 
+      ).then(
+        data => {
+          setData(data)
+          console.log(data)
+        }
+    )},[]);
+
   return (
     <div className="App">
-      <Canvas/>
+      {(typeof data.animal === "undefined") ? (
+        <p>Loading...</p>
+      ) : (
+        <h1>{data.animal}</h1>
+      )
+      }
+      <Canvas data={data}/>
     </div>
   );
 }
